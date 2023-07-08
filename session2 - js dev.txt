@@ -1,0 +1,248 @@
+slice() - returns a new array with specified start to end elements
+splice() - adds and remove elements from an array
+
+
+reduce() - reduces single array to value from left to right
+
+// for-in loop work on object
+
+
+//for loop is used usually when number of iterations are known
+//while loop is used when number of iterations are not exactly known
+
+by default in javascript rootscope is the window object
+
+-----------------
+let num = 50;
+function logNum(){
+	num = 100
+	console.log(num)
+}
+logNum()
+console.log(num)
+
+output:
+100
+100
+----------------
+var variable = 10
+function test(){
+    console.log(variable);
+    var variable = 20;
+    console.log(variable);
+}
+test()
+
+output:
+undefined
+20
+---------------------
+var variable = 10
+function test(){
+    console.log(variable);
+    variable = 20;            //here variable not redeclared
+    console.log(variable);
+}
+test()
+
+output:
+10
+20
+---------------------
+-----------------------
+this keyword - this alone is global. It points to window object
+this in a function represent the object that own the function
+// in an event, this refers to the element that received the event
+ 
+function myFunction (){
+console.log(this)
+}
+myFunction()
+output: window object
+---------------------
+================================================================================
+// this - explicit function binding
+
+var person = {
+firstName : "Nikhil",
+lastname: "karkra",
+id: 1,
+getFullName: function(){
+	console.log(this)
+	return this.firstName + " "+this.lastname;
+}
+};
+var person1 = {
+firstName: "salesforce",
+lastname: "dev",
+}
+person.getFullName.call(person1) --  o/p: "salesforce dev"
+
+---------------
+//with arguments call method
+var person = {
+firstName : "Nikhil",
+lastname: "karkra",
+id: 1,
+getFullName: function(a,b){
+	console.log(this)
+	return this.firstName + " "+this.lastname;
+}
+};
+var person1 = {
+firstName: "salesforce",
+lastname: "dev",
+}
+
+person.getFullName.call(person1, "A","B"); 
+o/p: "salesforce dev A B"
+
+person.getFullName.apply(person1, ["A","B"]);
+o/p: "salesforce dev A B"
+===============
+NOTE: both call and apply provide same result
+in call - we pass arguments as string
+in apply - we pass arguments as array
+------------------------------------------------
+
+
+************Functions in JS ************************
+function expression - assigning function to variable, calling it by variable name
+var x = function(a,b) {return a*b};
+x(2,3)
+O/P -- 6
+----------
+function constrructor
+var func = new Function("a","b","return a*b")
+func(4,3);
+o/p - 12
+--------------------
+//IIFE - Immediately Invoke Function expression
+(function(a,b){return a*b})(2,3) -- o/p is 6
+var abc = () => 42 ----> o/p : 42 {arrow function with no parmaters}
+var abc = x => x -----> abc(3) -> 3
+//arrow function with block body
+var abc = (x,y) => {
+	let z=10
+	return x+y+10
+}
+abc(2,3) ---> o/p is 15
+
+//return object
+var abc = ()=>({"name":"nikhil"}) 
+abc --> o/p: {name: "nikhil"}
+--------------------------
+
+*************closures************************
+closure is created when an inner function has access to its outer function variables and arguments.
+The inner function has access to
+1. its own variables
+2. outer function's variables and arguments
+3. global variables
+
+-----------
+
+function outer(){
+var counter =0
+	return function inner(){
+	counter += 1
+	return counter
+	} 
+}
+var counter = outer()
+counter() -> 1
+counter() -> 2
+counter() -> 3
+--------------------
+**********object destructuring *******************
+var employee = {
+firstName : "reddy",
+lastname : "chennuru
+}
+var {firstName,lastname,age="30"} = employee
+If new variables are to be created with key name then object destructuring is done.
+New variables are also can be created
+age -> o/p: 30
+--------------------
+********Array destructuring *****************
+var arr = ["A","B","c"]
+var [first, second, third, fourth ="D"] = arr
+first -> "A"
+fourth -> "D"
+----------------------------------
+**********Object.freeze method************
+-Object.freeze() method freezes an object
+
+1. A frozen object can no longer be changed
+2. freezing an object prevents new properties from being added to it
+3. existing properties from being removed
+Object.freeze(<object name>)
+
+----------------------------
+********Date object********
+
+
+----------------------
+***************Spread operator*********
+//1) create a new copy
+//shallow copy
+var x = [1,2,3,4,5]
+var y = [...x]
+y
+o/p: [1,2,3,4,5]
+
+//2) concatenation
+var y =  [...x, "6"]
+y
+o/p: [1,2,3,4,5,"6"]
+
+
+3) pass elements of an array to a function as separate arguments
+function add(a,b,c) {
+	return a+b+c;
+}
+var args = [1,2,3,4,5];
+add(...args)
+->o/p : 6
+-----------------------------------------------
+ 
+//4)convert string to an array
+[..."reddy"]
+o/p: ["r","e","d","d","y"]
+----------------------------
+***********************Rest operator*********
+NoTE: Rest operator should always be last 
+syntax is same - name depends on use and it used for separation 
+ex:
+function add(...args){
+console.log(args)
+}
+add(1,2,3) -- o/p: [1,2,3]
+
+ex2: 
+function xyz(x,y,...z){
+console.log(x," ",y);
+console.log(z)
+}
+xyz("how","are","you","reddy")
+o/p: 
+how are
+["you","reddy"]
+-----------------
+*************Object prototype & prototype chain *********
+//prototype and __proto__
+//prototype is a property of a function constructor  -- function is used
+//__proto__ is a property of an instance created from constructor -- object is used
+refer ppt and video
+--------
+*********************Javascript decorators***********************
+check video
+
+
+---------------------------
+
+
+
+
+
+

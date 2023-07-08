@@ -1,0 +1,130 @@
+Javascript is single threaded and execute one function at a time
+javascript is synchronous
+
+*******execution context*****
+two phases
+1. creation
+2. execution
+top to bottom execution
+callstack-is used to manage execution context*****
+
+
+---stack overflow problem
+***********callback*********'
+used in two ways
+1. synchronous
+2.asynchronous - without waiting executing next code
+
+asynchronous
+1. using call back - ex; rest api callstack-is
+2. using setTimeout
+ex:
+setTimeout(function(a,b){
+console.log(a)
+console.log(b)
+},5000,"salesforce","hello")
+
+o/p:
+salesforce
+hello
+
+ex:2
+console.log("hi")
+setTimeout(function(a,b){
+console.log(a)
+console.log(b)
+},5000,"reddy")
+console.log("how are you")
+
+o/p:
+hi
+how are you
+reddy
+----------------
+**********Event Loop with callback Queue***************
+
+
+callback hell - callback inside callback like a loop
+
+Solution to callback Hell
+1. write comments
+2. split function into smaller functions
+3. using promises
+4. Using Async/Await
+
+*********promises************
+promise is an object that returns a value which you hope to receive in the future but not now.
+A promise has three states:
+1.Pending
+2.Fulfilled or resolved
+3.Rejected
+
+or
+1.pending state
+2.settled state(fullfilled/resolved or rejected)
+
+fullfilled or rejected is called settled state
+NOTE:
+1. The promise constructor accepts a function as an argument.
+This function is called the "executor"
+
+2. fullfilled or rejected state is called settled state(other than pending state)
+
+//promise creation
+
+new Promise(<executor function>)
+
+let task = new Promise(function(resolve, reject){
+	setTimeout(()=>{
+		if(completed){
+			resolve("task completed") //this method moves to fullfilled state
+		} else {
+			reject("task rejected") //this method moves to rejected state
+		}
+	},5000)
+})
+
+consuming a promise
+1. then()
+-onFulfilled
+-onRejected
+2. catch()
+3. finally()
+
+
+---------
+promise.all()
+-if all service calls are to be success to proceed
+-exit if one promise fails also and takes input array of promises
+
+promise.race()
+-returns first settled promise
+
+**************async/await***********
+async/awiat keywords that build on top of promises,
+allowing you to write asynchronous code that looks more like synchronous code
+and more readable
+
+async keyword - before a function means a function always return a promise
+await - this keyword makes javascript wait until that promise settles and returns
+         its result
+
+NOTE: await only works inside async functions
+---------------
+*********Generator function*******
+it can pause and execute
+yield statement pauses function
+function* generate(){
+console.log("invoked 1st  time");
+yield 1;
+console.log("invoked 2nd time");
+yield 2;
+}
+
+let gen = generate();
+gen.next();
+
+		 
+
+
+

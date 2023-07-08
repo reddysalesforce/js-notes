@@ -1,0 +1,22 @@
+replacing number in console.assert
+
+function doubleNum(num){
+	return num*num
+}
+
+let num=3
+console.assert(doubleNum(num)%2 === 0,"%s Not an even number",num)
+NOTE: %s is replaced by num value(3rd paramater)
+o/p: Assertion failed: 3 Not an even number
+-----------
+**how to async function using assert*****
+
+async functions always return promises
+
+async function serviceCall(status){
+	return status ? "SUCCESS" : "ERROR"
+}
+
+console.assert(await serviceCall(true === "ERROR"),"Testing failed")
+o/p: Assertion failed: Testing failed
+

@@ -1,0 +1,121 @@
+innerText -- inserts text
+innerHTML -- inserts HTML
+
+document.querySelector("#hello").style.display = "none"
+
+exam view: display:none is used for filtering lists
+if visiblity:hidden is used then blank space will be there
+
+//display - none,block
+//visiblity - visible, hidden
+
+Event listener
+1. addEventListener() - register an event handler
+2. removeEventListener() - remove an event hanlder
+NOTE: when these two event listeners are used  "on" is not used
+
+"on" attribute is used with Event handler attribute and Event handler property
+
+
+***************page load events**************
+NOTE: questions will be from this
+LoadEvents:
+-------------
+1. DOMContentLoaded - dom tree loaded or not is checked
+2. load - fully loaded HTML and also external resources like images and stylesheets
+
+Unload events:
+-------------
+beforeunload: fires before  page and resources are unloaded
+unload: fires when the page has completely unloaded
+
+************Event Flows***************
+event flow - explains the order in which events are received on the page from the element
+where the event occurs and propagated through the DOM tree
+There are two main event models:
+1. Event Bubbling - event flows up from specific element and to last parent
+2. Event capturing-event starts at the least specific element and flows downward toward the most specific element
+
+********custom events***********
+NOTE:
+Inside custom event there is a property called "detail"
+and for custom event second argument is object
+where we pass data
+
+ex:
+<body id="body">
+	<button id="btn">click me</button>
+	<div id="msg"></div>
+	<script>
+	//custom events
+	//1 create an event
+	let btn = document.querySelector("#btn")
+	let msg = document/querySelector("#msg")
+	btn.addEventListener("click", function(e){
+		//creation
+		let helloEvent = new CustomEvent("showmsg",{
+			detail: "hello msg"
+		})
+		//trigger
+		btn.dispatchEvent(helloEvent)
+	})
+	
+	btn.addEventListener("showmsg", function(e){
+		console.log(e.detail)
+		msg.innerText = e.detail
+	})
+	</script>
+</body>
+
+o/p: 
+hello msg in printed in console
+hello msg is added in page
+-----------------------------
+currentTarget: where listener is attached
+target : where event is triggered
+
+*************Browser object model***************
+default object is window
+window API
+
+alert
+confirm
+prompt
+setTimeout
+setInterval
+localStorage
+sessionstorage
+-----------------------------------
+**********localStorage**************
+NOTE: localstorage saves the data in string format
+//1. saving data to localStorage
+localStorage.setItem("code","12345")
+//2. reading data from localStorage
+var code = localStorage.getItem("code")
+//3. Removing data from localStorage
+localStorage.removeItem("code")
+--------------------------
+**************sessionstorage***************
+sessionstorage is alive until session is alive
+//1. saving data to localStorage
+sessionStorage.setItem("code","12345")
+//2. reading data from localStorage
+var code = sessionStorage.getItem("code")
+//3. Removing data from sessionStorage
+sessionStorage.removeItem("code")
+NOTE:
+The sessionStorage object stores data for only one session
+(the data is deleted when the browser tab is closed)
+----------------------------------
+ location API 
+ Navigator API
+ Screen API: It provides the attributes of the screen on which the current window is being rendered
+ History API:
+ 
+ 
+
+
+
+
+
+

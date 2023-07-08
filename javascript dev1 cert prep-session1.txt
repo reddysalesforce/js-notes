@@ -1,0 +1,82 @@
+typeof null => object
+typeof {} => object
+typeof true => boolean
+typeof "true" => string
+//tricky questions
+typeof(typeof 1) => typeof "number" => string
+typeof !!(-1) => typeof !false => typeof true => "boolean"
+typeof function(){} => "function"
+typeof new Date() => "object"
+typeof [] => "object"
+
+========
+Number(undefined) => NaN
+Number(null) => 0 //imp
+Number("hello") => NaN
+Number(true) => 1
+Number(false) => 0
+Number([]) => 0
+Number(["33"]) => 33
+Number(["33","34"]) => NaN
+================
+Falsy values in Javascript
+Boolean(value) //always false
+
+1. false
+2. 0
+3. On: 0 as a BigInt
+4. ":Empty string
+5. null
+6. Undefined
+7. NaN
+===========
+//whenever  + and a  string either side of this operator both value become string
+"world"+10 => "world10"
+100 + null + 20 + "world" => "120world"
+Number(null) => 0
+100+200+undefined+"hey" => "NaNhey"
+
+var x = {}
+x+"hey"
+=> "[object object]hey"
+-------------------------
+true == "true" => false
+-0 === 0 => true
+NaN === NaN => false
+to fix these bugs Object.is came in javascript
+Object.is(-0,0) => false
+Object.is(NaN, NaN) => true
+Object.is("100","100") => true
+Object.is("100",100) => false
+-------------------------------------------------------
+-------------Operators----------------
+"hello" > "Hello" => true (h:104 H:74) as per ascii output
+
+---
+var x = [] || "hey"
+x => []  //because Boolean([]) is true
+----
+var x = 0 || "hey"
+x=> "hey" //because Boolean(0) is false
+-----
+!0 => true
+------------
+var x=0&& 'nik'
+x => 0 //because 0 is false
+------------
+!"hey" => false
+
+
+
+
+---------------------------------
+var, const, let
+---------------------------------
+anything between {} is block scoped
+
+
+---------------------------------
+
+
+
+
